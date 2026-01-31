@@ -1,195 +1,23 @@
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CAPA 7 Academy | Infraestructura de Ventas Global</title>
-    <meta name="description" content="Acceso a la infraestructura de los 1,000 expertos. Domina el mercado con tecnología CAPA 7.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --primary: #6366f1;
-            --primary-dark: #4f46e5;
-            --secondary: #06b6d4;
-            --accent: #f59e0b;
-            --success: #10b981;
-            --dark: #070b14;
-            --dark-light: #111827;
-            --glass: rgba(255, 255, 255, 0.03);
-            --glass-border: rgba(255, 255, 255, 0.08);
-            --text: #f8fafc;
-            --text-muted: #94a3b8;
-            --gradient-1: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #d946ef 100%);
-            --terminal-green: #00ff41;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: var(--dark); color: var(--text); line-height: 1.6; overflow-x: hidden; }
-
-        /* Capa 7 Background */
-        .bg-layer { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: radial-gradient(circle at 50% 50%, #1e1b4b 0%, #070b14 100%); }
-
-        .glass { background: var(--glass); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px); border: 1px solid var(--glass-border); border-radius: 20px; }
-
-        header { position: fixed; top: 0; width: 100%; z-index: 1000; padding: 1rem 2rem; }
-        .header-content { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.5rem; font-weight: 900; letter-spacing: -1px; background: var(--gradient-1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-
-        .btn { padding: 0.8rem 1.5rem; border-radius: 10px; font-weight: 700; cursor: pointer; transition: 0.3s; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; border: none; }
-        .btn-primary { background: var(--gradient-1); color: white; box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4); }
-        .btn-primary:hover { transform: scale(1.02); }
-
-        .hero { min-height: 100vh; display: flex; align-items: center; padding: 6rem 1rem; text-align: center; }
-        .hero-content { max-width: 900px; margin: 0 auto; }
-        .hero h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 900; line-height: 1; margin-bottom: 2rem; }
-        .hero h1 span { color: var(--secondary); text-shadow: 0 0 20px rgba(6, 182, 212, 0.5); }
-
-        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; padding: 2rem; max-width: 1400px; margin: 0 auto; }
-        .card { padding: 2rem; transition: 0.4s; position: relative; display: flex; flex-direction: column; }
-        .card:hover { border-color: var(--primary); transform: translateY(-5px); }
-        .card-price { font-size: 2.5rem; font-weight: 900; margin: 1rem 0; color: var(--terminal-green); }
-
-        /* Unified Modal Styles */
-        #payment-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); display: none; z-index: 9999; justify-content: center; align-items: center; }
-        .modal-box { width: 95%; max-width: 500px; padding: 2rem; border: 2px solid var(--primary); position: relative; max-height: 90vh; overflow-y: auto; }
-        .method-btn { width: 100%; padding: 1rem; margin-bottom: 0.5rem; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); color: white; text-align: left; border-radius: 10px; cursor: pointer; font-weight: 600; }
-        .method-btn:hover { background: var(--primary); }
-        .payment-info { display: none; margin-top: 1.5rem; padding: 1rem; background: rgba(0,0,0,0.3); border-radius: 10px; border: 1px dashed var(--primary); font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; }
-        .copy-box { display: flex; justify-content: space-between; align-items: center; background: #000; padding: 0.5rem; margin: 0.5rem 0; border-radius: 5px; }
-        .copy-icon { cursor: pointer; color: var(--primary); }
-
-        .badge-live { background: red; color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; vertical-align: middle; animation: pulse 1s infinite; }
-        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
-    </style>
-</head>
-
-<body>
-    <div class="bg-layer"></div>
-
-    <header class="glass">
-        <div class="header-content">
-            <div class="logo">CAPA 7 <span style="font-size: 0.8rem; font-weight: 400; color: var(--text-muted);">v.7.0.26</span></div>
-            <a href="#catalogo" class="btn btn-primary">EJECUTAR ORDEN</a>
-        </div>
-    </header>
-
-    <section class="hero">
-        <div class="hero-content">
-            <h1 class="fade-in">Infraestructura <br><span>1,000 EXPERTOS</span></h1>
-            <p style="font-size: 1.2rem; color: var(--text-muted); margin-bottom: 3rem;">Despliegue masivo de activos digitales. Sin intermediarios. Solo ejecución.</p>
-            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-                <div class="glass" style="padding: 1rem 2rem;">🚀 100 Ventas/Hora</div>
-                <div class="glass" style="padding: 1rem 2rem;">⚡ Latencia Cero</div>
-                <div class="glass" style="padding: 1rem 2rem;">🛡️ Pago Verificado</div>
-            </div>
-        </div>
-    </section>
-
-    <section id="catalogo" style="padding-bottom: 100px;">
-        <div class="products-grid">
-            <div class="card glass">
-                <span class="product-badge" style="color: var(--primary); font-weight: 800;">MICRO-NODO</span>
-                <h3 style="margin-top: 1rem;">Agente IA Elemental</h3>
-                <p style="color: var(--text-muted); flex-grow: 1;">Despliegue rápido de agente de prospección autónomo.</p>
-                <div class="card-price">$6.66</div>
-                <button onclick="openCheckout('Agente IA Elemental', '6.66', 'https://buy.stripe.com/dRmcN54TZfLA0Ij4C89Ve05')" class="btn btn-primary" style="width: 100%; justify-content: center;">ADQUIRIR NODO</button>
-            </div>
-
-            <div class="card glass">
-                <span class="product-badge" style="color: var(--secondary); font-weight: 800;">SOFTWARE SaaS</span>
-                <h3 style="margin-top: 1rem;">UntitleNexus V3</h3>
-                <p style="color: var(--text-muted); flex-grow: 1;">Ecosistema de gestión de micro-ventas automatizadas.</p>
-                <div class="card-price">$9.99</div>
-                <button onclick="openCheckout('UntitleNexus V3', '9.99', 'https://buy.stripe.com/3cIcN57276b00Ij7Ok9Ve04')" class="btn btn-primary" style="width: 100%; justify-content: center;">DESPLEGAR SaaS</button>
-            </div>
-
-            <div class="card glass" style="border: 1px solid var(--primary);">
-                <span class="badge-live">OFERTA ACTIVA</span>
-                <h3 style="margin-top: 1rem;">Pack 1,000 Expertos Elite</h3>
-                <p style="color: var(--text-muted); flex-grow: 1;">Toda la sabiduría de los cerradores mundiales en un solo repositorio.</p>
-                <div class="card-price">$49.99</div>
-                <button onclick="openCheckout('Pack 1,000 Expertos Elite', '49.99', 'https://buy.stripe.com/cNicN5727fLAfDd9Ws9Ve06')" class="btn btn-primary" style="width: 100%; justify-content: center;">ACCESO ELITE</button>
-            </div>
-
-            <div class="card glass">
-                <span class="product-badge" style="color: var(--accent); font-weight: 800;">ROOT ACCESS</span>
-                <h3 style="margin-top: 1rem;">Master Architect Source</h3>
-                <p style="color: var(--text-muted); flex-grow: 1;">Código fuente completo y scripts de viralización masiva.</p>
-                <div class="card-price">$199.99</div>
-                <button onclick="openCheckout('Master Architect Source', '199.99', 'https://buy.stripe.com/6oU3cv5Y38j84YzecI9Ve07')" class="btn btn-primary" style="width: 100%; justify-content: center;">CONTROL TOTAL</button>
-            </div>
-        </div>
-    </section>
-
-    <div id="payment-modal">
-        <div class="modal-box glass">
-            <button onclick="closeModal()" style="position: absolute; top: 1rem; right: 1rem; background: none; border: none; color: white; cursor: pointer; font-size: 1.5rem;">&times;</button>
-            <h2 id="m-title">Producto</h2>
-            <div id="m-price" class="card-price" style="font-size: 2rem;">$0.00</div>
-            <p style="margin-bottom: 1.5rem; font-size: 0.9rem; color: var(--text-muted);">Seleccione el protocolo de transferencia:</p>
-
-            <button class="method-btn" onclick="showMethod('stripe-link')">💳 Tarjeta de Crédito (Stripe)</button>
-            <div id="stripe-link" class="payment-info">
-                <a id="stripe-btn" href="#" target="_blank" class="btn btn-primary" style="width: 100%; justify-content: center;">PAGAR CON TARJETA</a>
-            </div>
-
-            <button class="method-btn" onclick="showMethod('crypto-info')">₿ Criptomonedas (USDT/BTC)</button>
-            <div id="crypto-info" class="payment-info">
-                <p>USDT / USDC (BEP20/ERC20):</p>
-                <div class="copy-box">
-                    <span>0xeBe965EFe1ab53d2da915134d72e5BdBd5E3C053</span>
-                    <i class="fas fa-copy copy-icon" onclick="copy('0xeBe965EFe1ab53d2da915134d72e5BdBd5E3C053')"></i>
-                </div>
-                <p>BTC:</p>
-                <div class="copy-box">
-                    <span>bc1qjjgsx3lwa0wz59l89htcpr28j5s7dtmv99fmw0</span>
-                    <i class="fas fa-copy copy-icon" onclick="copy('bc1qjjgsx3lwa0wz59l89htcpr28j5s7dtmv99fmw0')"></i>
-                </div>
-            </div>
-
-            <button class="method-btn" onclick="showMethod('bank-info')">🏦 Transferencia Bancaria (Global)</button>
-            <div id="bank-info" class="payment-info" style="max-height: 200px; overflow-y: auto;">
-                <strong>USA (Lead Bank):</strong><br>
-                Nombre: Diego Edgardo Cortez Yanez<br>
-                Cuenta: 219449048779 | Ruta: 101019644<br><br>
-                <strong>EUROPA (Openpayd):</strong><br>
-                IBAN: MT12CFTE28004000000000005456093<br>
-                BIC: CFTEMTM1XXX<br><br>
-                <strong>BOLIVIA (BMSC):</strong><br>
-                Cuenta: 4069474188<br>
-                Titular: Diego Edgardo Cortez Yañez
-            </div>
-            
-            <p style="margin-top: 1rem; font-size: 0.7rem; color: var(--accent); text-align: center;">Envía comprobante al bot para activación inmediata.</p>
-        </div>
+<div class="products-grid">
+    
+    <div class="card glass">
+        <span class="product-badge">MICRO-NODO</span>
+        <h3>Agente IA Elemental</h3>
+        <div class="card-price">$6.66</div>
+        <button onclick="openCheckout('Agente IA Elemental', '6.66', 'https://buy.stripe.com/dRmcN54TZfLA0Ij4C89Ve05')" 
+                class="btn btn-primary" style="width: 100%; justify-content: center;">
+            ADQUIRIR NODO
+        </button>
     </div>
 
-    <script>
-        function openCheckout(title, price, stripeUrl) {
-            document.getElementById('m-title').innerText = title;
-            document.getElementById('m-price').innerText = '$' + price + ' USD';
-            document.getElementById('stripe-btn').href = stripeUrl;
-            document.getElementById('payment-modal').style.display = 'flex';
-        }
+    <div class="card glass">
+        <span class="product-badge">SOFTWARE SaaS</span>
+        <h3>UntitleNexus V3</h3>
+        <div class="card-price">$9.99</div>
+        <button onclick="openCheckout('UntitleNexus V3', '9.99', 'https://buy.stripe.com/3cIcN57276b00Ij7Ok9Ve04')" 
+                class="btn btn-primary" style="width: 100%; justify-content: center;">
+            DESPLEGAR SaaS
+        </button>
+    </div>
 
-        function closeModal() {
-            document.getElementById('payment-modal').style.display = 'none';
-            document.querySelectorAll('.payment-info').forEach(el => el.style.display = 'none');
-        }
-
-        function showMethod(id) {
-            document.querySelectorAll('.payment-info').forEach(el => el.style.display = 'none');
-            document.getElementById(id).style.display = 'block';
-        }
-
-        function copy(text) {
-            navigator.clipboard.writeText(text);
-            alert("Copiado al portapapeles");
-        }
-    </script>
-</body>
-</html>
+</div>

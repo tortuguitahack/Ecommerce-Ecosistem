@@ -1,23 +1,136 @@
-<div class="products-grid">
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAPA 7 GLOBAL | Infraestructura de Expertos</title>
     
-    <div class="card glass">
-        <span class="product-badge">MICRO-NODO</span>
-        <h3>Agente IA Elemental</h3>
-        <div class="card-price">$6.66</div>
-        <button onclick="openCheckout('Agente IA Elemental', '6.66', 'https://buy.stripe.com/dRmcN54TZfLA0Ij4C89Ve05')" 
-                class="btn btn-primary" style="width: 100%; justify-content: center;">
-            ADQUIRIR NODO
-        </button>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'es',
+                includedLanguages: 'en,pt,fr,de,it,ru,ja,ko,zh-CN,ar,hi,tr,nl,pl,sv,vi,id,th,uk,he',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: true
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #6366f1; --dark: #070b14; --glass: rgba(255, 255, 255, 0.05);
+            --terminal: #00ff41; --accent: #f59e0b;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: var(--dark); color: white; line-height: 1.6; }
+        .bg-gradient { position: fixed; top: 0; width: 100%; height: 100%; z-index: -1; background: radial-gradient(circle at 50% 50%, #1e1b4b 0%, #070b14 100%); }
+        
+        /* Translate Bar Hidden - Elegant UI */
+        #google_translate_element { position: absolute; top: 10px; right: 10px; z-index: 2000; opacity: 0.8; }
+        .goog-te-banner-frame.skiptranslate { display: none !important; }
+        body { top: 0px !important; }
+
+        header { padding: 2rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .card { background: var(--glass); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); border-radius: 15px; padding: 2rem; transition: 0.3s; }
+        .card:hover { border-color: var(--primary); transform: translateY(-5px); }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; padding: 4rem 2rem; max-width: 1400px; margin: 0 auto; }
+        .price { font-size: 2.5rem; font-weight: 900; color: var(--terminal); margin: 1rem 0; }
+        
+        .btn { display: block; width: 100%; padding: 1rem; text-align: center; border-radius: 10px; font-weight: bold; text-decoration: none; cursor: pointer; transition: 0.3s; border: none; }
+        .btn-buy { background: linear-gradient(135deg, #6366f1, #d946ef); color: white; }
+        
+        #modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); display: none; z-index: 10000; align-items: center; justify-content: center; }
+        .modal-box { background: #111; border: 2px solid var(--primary); padding: 2rem; width: 90%; max-width: 500px; border-radius: 20px; }
+        .method-btn { width: 100%; padding: 1rem; margin: 0.5rem 0; background: #222; border: 1px solid #444; color: white; border-radius: 8px; cursor: pointer; text-align: left; }
+        .info-panel { display: none; padding: 1rem; background: #000; border: 1px dashed var(--primary); margin-top: 1rem; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+    <div class="bg-gradient"></div>
+    <div id="google_translate_element"></div>
+
+    <header>
+        <div style="font-size: 1.5rem; font-weight: 900; color: var(--primary);">CAPA 7 <span style="color:white">GLOBAL</span></div>
+        <div style="font-size: 0.8rem; border: 1px solid var(--terminal); color: var(--terminal); padding: 2px 10px;">STATUS: ROOT ONLINE</div>
+    </header>
+
+    <div style="text-align: center; padding: 4rem 1rem;">
+        <h1>Infraestructura de los 1,000 Expertos</h1>
+        <p>Seleccionada para el despliegue mundial. Elige tu nivel de acceso.</p>
     </div>
 
-    <div class="card glass">
-        <span class="product-badge">SOFTWARE SaaS</span>
-        <h3>UntitleNexus V3</h3>
-        <div class="card-price">$9.99</div>
-        <button onclick="openCheckout('UntitleNexus V3', '9.99', 'https://buy.stripe.com/3cIcN57276b00Ij7Ok9Ve04')" 
-                class="btn btn-primary" style="width: 100%; justify-content: center;">
-            DESPLEGAR SaaS
-        </button>
+    <div class="grid">
+        <div class="card">
+            <h3>Micro-Nodo IA</h3>
+            <p>Agente autónomo de prospección básica.</p>
+            <div class="price">$6.66</div>
+            <button onclick="pay('Micro-Nodo', '6.66', 'https://buy.stripe.com/dRmcN54TZfLA0Ij4C89Ve05')" class="btn btn-buy">ADQUIRIR NODO</button>
+        </div>
+
+        <div class="card">
+            <h3>UntitleNexus V3</h3>
+            <p>SaaS completo para gestión de ventas.</p>
+            <div class="price">$9.99</div>
+            <button onclick="pay('UntitleNexus V3', '9.99', 'https://buy.stripe.com/3cIcN57276b00Ij7Ok9Ve04')" class="btn btn-buy">DESPLEGAR SaaS</button>
+        </div>
+
+        <div class="card" style="border: 2px solid var(--primary);">
+            <h3>Pack Elite 1,000 Expertos</h3>
+            <p>Toda la biblioteca de ventas mundial.</p>
+            <div class="price">$49.99</div>
+            <button onclick="pay('Elite Pack', '49.99', 'https://buy.stripe.com/cNicN5727fLAfDd9Ws9Ve06')" class="btn btn-buy">ACCESO ELITE</button>
+        </div>
+
+        <div class="card">
+            <h3>Master Source Code</h3>
+            <p>Código fuente y arquitectura ROOT.</p>
+            <div class="price">$199.99</div>
+            <button onclick="pay('Master Source', '199.99', 'https://buy.stripe.com/6oU3cv5Y38j84YzecI9Ve07')" class="btn btn-buy">CONTROL TOTAL</button>
+        </div>
     </div>
 
-</div>
+    <div id="modal">
+        <div class="modal-box">
+            <h2 id="m-name">Producto</h2>
+            <div id="m-cost" class="price" style="font-size: 1.8rem;">$0.00</div>
+            
+            <button class="method-btn" onclick="show('m-stripe')">💳 Tarjeta (Stripe)</button>
+            <div id="m-stripe" class="info-panel">
+                <a id="m-link" href="#" target="_blank" class="btn btn-buy">IR AL PAGO SEGURO</a>
+            </div>
+
+            <button class="method-btn" onclick="show('m-crypto')">₿ Crypto (USDT/BTC)</button>
+            <div id="m-crypto" class="info-panel">
+                USDT (BEP20): 0xeBe965EFe1ab53d2da915134d72e5BdBd5E3C053<br><br>
+                BTC: bc1qjjgsx3lwa0wz59l89htcpr28j5s7dtmv99fmw0
+            </div>
+
+            <button class="method-btn" onclick="show('m-bank')">🏦 Banco (ACH/IBAN)</button>
+            <div id="m-bank" class="info-panel">
+                <strong>USA:</strong> Lead Bank | Cuenta: 219449048779 | Ruta: 101019644<br><br>
+                <strong>EUROPA:</strong> IBAN: MT12CFTE28004000000000005456093
+            </div>
+
+            <button onclick="closePay()" style="margin-top: 1rem; background: none; border: none; color: gray; cursor: pointer;">[ Cancelar ]</button>
+        </div>
+    </div>
+
+    <script>
+        function pay(name, price, link) {
+            document.getElementById('m-name').innerText = name;
+            document.getElementById('m-cost').innerText = '$' + price;
+            document.getElementById('m-link').href = link;
+            document.getElementById('modal').style.display = 'flex';
+        }
+        function closePay() { document.getElementById('modal').style.display = 'none'; }
+        function show(id) {
+            document.querySelectorAll('.info-panel').forEach(p => p.style.display = 'none');
+            document.getElementById(id).style.display = 'block';
+        }
+    </script>
+</body>
+</html>
